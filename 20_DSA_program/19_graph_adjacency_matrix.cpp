@@ -5,37 +5,34 @@
    Program to represent a graph using adjacency matrix.
 */
 
-#include <stdio.h>
+#include <iostream>
+#include <vector>
+using namespace std;
 
 int main() {
     int n, e, u, v;
-    printf("Enter number of vertices: ");
-    scanf("%d", &n);
+    cout << "Enter number of vertices: ";
+    cin >> n;
 
-    int a[n][n];
-    for(int i=0;i<n;i++)
-        for(int j=0;j<n;j++)
-            a[i][j]=0;
+    vector<vector<int>> a(n, vector<int>(n, 0));
 
-    printf("Enter number of edges: ");
-    scanf("%d", &e);
+    cout << "Enter number of edges: ";
+    cin >> e;
 
-    for(int i=0;i<e;i++) {
-        printf("Enter edge (u v): ");
-        scanf("%d %d", &u, &v);
-        a[u][v] = 1;
-        a[v][u] = 1;
+    for(int i = 0; i < e; i++) {
+        cout << "Enter edge (u v): ";
+        cin >> u >> v;
+        a[u][v] = 1;  
+        a[v][u] = 1;  // Remove this line for directed graph
     }
 
-    printf("Adjacency Matrix:\n");
-    for(int i=0;i<n;i++) {
-        for(int j=0;j<n;j++)
-            printf("%d ", a[i][j]);
-        printf("\n");
+    cout << "Adjacency Matrix:\n";
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++)
+            cout << a[i][j] << " ";
+        cout << endl;
     }
 
-    return 0;
-}
 
 
 

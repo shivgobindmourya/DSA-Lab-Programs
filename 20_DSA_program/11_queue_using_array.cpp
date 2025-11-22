@@ -5,53 +5,51 @@
    Program to implement queue using arrays with enqueue, dequeue, peek, and display.
 */
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
+
 #define MAX 5
 
-int queue[MAX];
+int queueArr[MAX];
 int front = -1, rear = -1;
-
 
 void enqueue(int x) {
     if (rear == MAX - 1) {
-        printf("Queue Overflow! Cannot insert %d\n", x);
+        cout << "Queue Overflow! Cannot insert " << x << endl;
     } else {
         if (front == -1) front = 0;
         rear++;
-        queue[rear] = x;
-        printf("%d inserted into the queue.\n", x);
+        queueArr[rear] = x;
+        cout << x << " inserted into the queue." << endl;
     }
 }
 
-
 void dequeue() {
     if (front == -1 || front > rear) {
-        printf("Queue Underflow! Nothing to delete.\n");
+        cout << "Queue Underflow! Nothing to delete." << endl;
     } else {
-        printf("%d deleted from the queue.\n", queue[front]);
+        cout << queueArr[front] << " deleted from the queue." << endl;
         front++;
     }
 }
 
-
 void peek() {
     if (front == -1 || front > rear) {
-        printf("Queue is empty! Nothing to peek.\n");
+        cout << "Queue is empty! Nothing to peek." << endl;
     } else {
-        printf("Front element = %d\n", queue[front]);
+        cout << "Front element = " << queueArr[front] << endl;
     }
 }
 
-
 void display() {
     if (front == -1 || front > rear) {
-        printf("Queue is empty!\n");
+        cout << "Queue is empty!" << endl;
     } else {
-        printf("Queue elements: ");
+        cout << "Queue elements: ";
         for (int i = front; i <= rear; i++) {
-            printf("%d ", queue[i]);
+            cout << queueArr[i] << " ";
         }
-        printf("\n");
+        cout << endl;
     }
 }
 

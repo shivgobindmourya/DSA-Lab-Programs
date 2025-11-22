@@ -2,10 +2,11 @@
 
 /*
    Program 16:
-   Program to create a binary tree using array representation.
+   Program to create a binary tree using array representation in C++.
 */
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 #define MAX 15
 
@@ -35,12 +36,12 @@ void setRight(int key, int parentIndex) {
 }
 
 void printTree() {
-    printf("\nArray representation of Binary Tree:\n");
+    cout << "\nArray representation of Binary Tree:\n";
     for (int i = 0; i < MAX; i++) {
         if (tree[i] != -1)
-            printf("Index %2d : %d\n", i, tree[i]);
+            cout << "Index " << i << " : " << tree[i] << endl;
         else
-            printf("Index %2d : - (empty)\n", i);
+            cout << "Index " << i << " : - (empty)\n";
     }
 }
 

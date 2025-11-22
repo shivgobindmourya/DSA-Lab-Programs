@@ -2,38 +2,42 @@
 
 /*
    Program 8:
-   Program to calculate address of an element in a 2D array using row-major and column-major formulas.
+   Program to calculate address of an element in a 2D array using 
+   row-major and column-major formulas.
 */
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
 int main() {
     int base, i, j, M, N, size;
 
-    printf("Enter Base Address of Array: ");
-    scanf("%d", &base);
+    cout << "Enter Base Address of Array: ";
+    cin >> base;
 
-    printf("Enter number of Rows (M): ");
-    scanf("%d", &M);
+    cout << "Enter number of Rows (M): ";
+    cin >> M;
 
-    printf("Enter number of Columns (N): ");
-    scanf("%d", &N);
+    cout << "Enter number of Columns (N): ";
+    cin >> N;
 
-    printf("Enter Row Index (i): ");
-    scanf("%d", &i);
+    cout << "Enter Row Index (i): ";
+    cin >> i;
 
-    printf("Enter Column Index (j): ");
-    scanf("%d", &j);
+    cout << "Enter Column Index (j): ";
+    cin >> j;
 
     size = sizeof(int); 
 
     int row_major = base + ((i * N) + j) * size;
     int col_major = base + ((j * M) + i) * size;
 
-    printf("\nAddress using Row-Major: %d", row_major);
-    printf("\nAddress using Column-Major: %d\n", col_major);
+    cout << "\nAddress using Row-Major: " << row_major;
+    cout << "\nAddress using Column-Major: " << col_major << endl;
 
     return 0;
 }
+
+
 
 

@@ -5,28 +5,36 @@
    Program to implement queue using two stacks.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+using namespace std;
 
-#define MAX 100
-
-int s1[MAX], s2[MAX];
+int s1[100], s2[100];
 int top1 = -1, top2 = -1;
 
-void push1(int x) { s1[++top1] = x; }
-int pop1() { return s1[top1--]; }
+void push1(int x) { 
+    s1[++top1] = x; 
+}
 
-void push2(int x) { s2[++top2] = x; }
-int pop2() { return s2[top2--]; }
+int pop1() { 
+    return s1[top1--]; 
+}
+
+void push2(int x) { 
+    s2[++top2] = x; 
+}
+
+int pop2() { 
+    return s2[top2--]; 
+}
 
 void enqueue(int x) {
     push1(x);
-    printf("Enqueued: %d\n", x);
+    cout << "Enqueued: " << x << endl;
 }
 
 int dequeue() {
     if (top1 == -1 && top2 == -1) {
-        printf("Queue is empty!\n");
+        cout << "Queue is empty!" << endl;
         return -1;
     }
 
@@ -40,16 +48,18 @@ int dequeue() {
 
 void display() {
     if (top1 == -1 && top2 == -1) {
-        printf("Queue is empty!\n");
+        cout << "Queue is empty!" << endl;
         return;
     }
 
-    printf("Queue: ");
+    cout << "Queue: ";
     for (int i = top2; i >= 0; i--)
-        printf("%d ", s2[i]);
+        cout << s2[i] << " ";
+
     for (int i = 0; i <= top1; i++)
-        printf("%d ", s1[i]);
-    printf("\n");
+        cout << s1[i] << " ";
+
+    cout << endl;
 }
 
 int main() {
@@ -59,7 +69,7 @@ int main() {
 
     display();
 
-    printf("Dequeued: %d\n", dequeue());
+    cout << "Dequeued: " << dequeue() << endl;
 
     display();
 

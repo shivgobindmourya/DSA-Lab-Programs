@@ -2,53 +2,67 @@
 
 /*
    Program 12:
-   Program to implement queue using linked list with dynamic memory allocation.
+   Program to implement queue using linked list with dynamic memory allocation (C++).
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+using namespace std;
 
 struct Node {
     int data;
-    struct Node* next;
+    Node* next;
 };
 
-struct Node *front = NULL, *rear = NULL;
+Node *frontPtr = nullptr, *rearPtr = nullptr;
 
 void enqueue(int x) {
-    struct Node* n = (struct Node*)malloc(sizeof(struct Node));
+    Node* n = new Node;
     n->data = x;
-    n->next = NULL;
-    if (rear == NULL) front = rear = n;
-    else rear->next = n, rear = n;
+    n->next = nullptr;
+
+    if (rearPtr == nullptr) {
+        frontPtr = rearPtr = n;
+    } else {
+        rearPtr->next = n;
+        rearPtr = n;
+    }
 }
 
 void dequeue() {
-    if (front == NULL) {
-        printf("Queue empty\n");
+    if (frontPtr == nullptr) {
+        cout << "Queue empty\n";
         return;
     }
-    struct Node* temp = front;
-    printf("Dequeued: %d\n", front->data);
-    front = front->next;
-    if (front == NULL) rear = NULL;
-    free(temp);
+
+    Node* temp = frontPtr;
+    cout << "Dequeued: " << frontPtr->data << endl;
+
+    frontPtr = frontPtr->next;
+    if (frontPtr == nullptr) rearPtr = nullptr;
+
+    delete temp;
 }
 
 void peek() {
-    if (front == NULL) printf("Queue empty\n");
-    else printf("Front: %d\n", front->data);
+    if (frontPtr == nullptr)
+        cout << "Queue empty\n";
+    else
+        cout << "Front: " << frontPtr->data << endl;
 }
 
 void display() {
-    if (front == NULL) {
-        printf("Queue empty\n");
+    if (frontPtr == nullptr) {
+        cout << "Queue empty\n";
         return;
     }
-    struct Node* t = front;
-    printf("Queue: ");
-    while (t) printf("%d ", t->data), t = t->next;
-    printf("\n");
+
+    Node* t = frontPtr;
+    cout << "Queue: ";
+    while (t) {
+        cout << t->data << " ";
+        t = t->next;
+    }
+    cout << endl;
 }
 
 int main() {

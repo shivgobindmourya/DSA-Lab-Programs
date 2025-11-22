@@ -5,29 +5,31 @@
    Program to implement stack using arrays with push, pop, peek, and display operations.
 */
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
+
 #define MAX 5   // maximum size of stack
 
-int stack[MAX];
+int stackArr[MAX];
 int top = -1;
 
 // Function to push
 void push(int value) {
     if (top == MAX - 1) {
-        printf("Stack Overflow! Cannot push %d\n", value);
+        cout << "Stack Overflow! Cannot push " << value << endl;
     } else {
         top++;
-        stack[top] = value;
-        printf("%d pushed into stack\n", value);
+        stackArr[top] = value;
+        cout << value << " pushed into stack" << endl;
     }
 }
 
 // Function to pop
 void pop() {
     if (top == -1) {
-        printf("Stack Underflow! Nothing to pop\n");
+        cout << "Stack Underflow! Nothing to pop" << endl;
     } else {
-        printf("%d popped from stack\n", stack[top]);
+        cout << stackArr[top] << " popped from stack" << endl;
         top--;
     }
 }
@@ -35,38 +37,38 @@ void pop() {
 // Function to get top element
 void peek() {
     if (top == -1) {
-        printf("Stack is empty! No top element\n");
+        cout << "Stack is empty! No top element" << endl;
     } else {
-        printf("Top element = %d\n", stack[top]);
+        cout << "Top element = " << stackArr[top] << endl;
     }
 }
 
 // Function to display stack
 void display() {
     if (top == -1) {
-        printf("Stack is empty\n");
+        cout << "Stack is empty" << endl;
     } else {
-        printf("Stack elements: ");
+        cout << "Stack elements: ";
         for (int i = top; i >= 0; i--) {
-            printf("%d ", stack[i]);
+            cout << stackArr[i] << " ";
         }
-        printf("\n");
+        cout << endl;
     }
 }
 
 int main() {
     int choice, value;
 
-    while (1) {
-        printf("\n--- Stack Menu ---\n");
-        printf("1. Push\n2. Pop\n3. Peek\n4. Display\n5. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
+    while (true) {
+        cout << "\n--- Stack Menu ---\n";
+        cout << "1. Push\n2. Pop\n3. Peek\n4. Display\n5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
         switch (choice) {
             case 1:
-                printf("Enter value to push: ");
-                scanf("%d", &value);
+                cout << "Enter value to push: ";
+                cin >> value;
                 push(value);
                 break;
 
@@ -83,11 +85,11 @@ int main() {
                 break;
 
             case 5:
-                printf("Exiting program...\n");
+                cout << "Exiting program..." << endl;
                 return 0;
 
             default:
-                printf("Invalid choice! Try again\n");
+                cout << "Invalid choice! Try again" << endl;
         }
     }
 
